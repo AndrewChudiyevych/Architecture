@@ -1,6 +1,9 @@
 package kniga.project.bookshop.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -10,6 +13,9 @@ import java.util.Set;
 
 @Data
 @Entity(name = "author")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Author {
     @Id
     private Long id;
