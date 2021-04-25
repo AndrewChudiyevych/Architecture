@@ -1,9 +1,10 @@
 package kniga.project.bookshop.controller;
 
+import kniga.project.bookshop.dto.GenreRequest;
 import kniga.project.bookshop.entity.Author;
 import kniga.project.bookshop.entity.Book;
 import kniga.project.bookshop.entity.Genre;
-import kniga.project.bookshop.services.impls.GenreService;
+import kniga.project.bookshop.services.GenreService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,15 +31,15 @@ public class GenreController {
     }
 
     @PostMapping("/")
-    public Genre createGenre(@RequestBody Genre genre) {
-
-        return servise.save(genre);
+    public Genre createGenre(@RequestBody GenreRequest request) {
+        return servise.create(request);
+        //return servise.save(genre);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/edit/{id}")
     public Genre updateGenre(@PathVariable long id, @RequestBody Genre genre) {
 
-        return servise.edit(genre);
+        return servise.update(id, genre);
     }
 
     @DeleteMapping("/{id}")

@@ -1,8 +1,9 @@
 package kniga.project.bookshop.controller;
 
 
+import kniga.project.bookshop.dto.BookRequest;
 import kniga.project.bookshop.entity.*;
-import kniga.project.bookshop.services.impls.BookServise;
+import kniga.project.bookshop.services.BookServise;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,15 +30,15 @@ public class BookController {
     }
 
     @PostMapping("/")
-    public Book createBook(@RequestBody Book book) {
-
-        return service.save(book);
+    public Book createBook(@RequestBody BookRequest request) {
+        return service.create(request);
+        //return service.save(book);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/edit/{id}")
     public Book updateBook(@PathVariable long id, @RequestBody Book book) {
 
-        return service.edit(book);
+        return service.update(id, book);
     }
 
     @DeleteMapping("/{id}")

@@ -1,9 +1,10 @@
 package kniga.project.bookshop.controller;
 
 
+import kniga.project.bookshop.dto.ReportsRequest;
 import kniga.project.bookshop.entity.Book;
 import kniga.project.bookshop.entity.Reports;
-import kniga.project.bookshop.services.impls.ReportsService;
+import kniga.project.bookshop.services.ReportsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,15 +31,15 @@ public class ReportsController {
     }
 
     @PostMapping("/")
-    public Reports createReport(@RequestBody Reports reports) {
-
-        return servise.save(reports);
+    public Reports createReport(@RequestBody ReportsRequest request) {
+        return servise.create(request);
+        //return servise.save(reports);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/edit/{id}")
     public Reports updateReport(@PathVariable long id, @RequestBody Reports reports) {
 
-        return servise.edit(reports);
+        return servise.update(id, reports);
     }
 
     @DeleteMapping("/{id}")

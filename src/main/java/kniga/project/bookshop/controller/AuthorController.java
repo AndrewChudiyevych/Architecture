@@ -4,10 +4,11 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
+import kniga.project.bookshop.dto.AuthorRequest;
 import kniga.project.bookshop.entity.Author;
 import kniga.project.bookshop.entity.Book;
 import kniga.project.bookshop.entity.Genre;
-import kniga.project.bookshop.services.impls.AuthorService;
+import kniga.project.bookshop.services.AuthorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,15 +41,15 @@ public class AuthorController {
     }
 
     @PostMapping("/")
-    public Author createAuthor(@RequestBody Author author) {
+    public Author createAuthor(@RequestBody AuthorRequest authorRequest) {
 
-        return service.save(author);
+        //return service.save(author);
+        return service.create(authorRequest);
     }
 
-    @PutMapping("/{id}")
-    public Author updateAuthor(@PathVariable long id, @RequestBody Author author) {
-
-        return service.edit(author);
+    @PutMapping("/edit/{id}")
+    public Author updateAuthor(@PathVariable long id, @RequestBody AuthorRequest author) {
+        return service.update(id, author);
     }
 
     @DeleteMapping("/{id}")
@@ -56,6 +57,11 @@ public class AuthorController {
         service.delete(id);
     }
 
+
+    @GetMapping("{authorId}/name")
+    public List<Author> getAuthorByName(@PathVariable Long authorId) {
+        return null;
+    }
     @GetMapping("/{author_id}/genres")
     public List<Genre> getGenresByAuthor(@PathVariable long author_id) {
         return null;

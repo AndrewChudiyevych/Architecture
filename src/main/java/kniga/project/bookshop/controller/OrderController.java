@@ -1,9 +1,10 @@
 package kniga.project.bookshop.controller;
 
 
+import kniga.project.bookshop.dto.OrderRequest;
 import kniga.project.bookshop.entity.Book;
 import kniga.project.bookshop.entity.Order;
-import kniga.project.bookshop.services.impls.OrderService;
+import kniga.project.bookshop.services.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,15 +30,15 @@ public class OrderController {
     }
 
     @PostMapping("/")
-    public Order createOrder(@RequestBody Order order) {
-
-        return servise.save(order);
+    public Order createOrder(@RequestBody OrderRequest request) {
+        return servise.create(request);
+        //return servise.save(order);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/edit/{id}")
     public Order updateOrder(@PathVariable long id, @RequestBody Order order) {
 
-        return servise.edit(order);
+        return servise.update(id, order);
     }
 
     @DeleteMapping("/{id}")

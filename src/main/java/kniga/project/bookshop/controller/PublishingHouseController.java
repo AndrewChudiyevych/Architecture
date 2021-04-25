@@ -1,9 +1,10 @@
 package kniga.project.bookshop.controller;
 
 
+import kniga.project.bookshop.dto.PublishingHouseRequest;
 import kniga.project.bookshop.entity.Book;
 import kniga.project.bookshop.entity.PublishingHouse;
-import kniga.project.bookshop.services.impls.PublishingHouseService;
+import kniga.project.bookshop.services.PublishingHouseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,14 +31,14 @@ public class PublishingHouseController {
     }
 
     @PostMapping("/")
-    public PublishingHouse createPublishingHouse(@RequestBody PublishingHouse publishingHouse) {
-
-        return servise.save(publishingHouse);
+    public PublishingHouse createPublishingHouse(@RequestBody PublishingHouseRequest request) {
+        return servise.create(request);
+        //return servise.save(publishingHouse);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/edit/{id}")
     public PublishingHouse updatePublishingHouse(@PathVariable long id, @RequestBody PublishingHouse publishingHouse) {
-        return servise.edit(publishingHouse);
+        return servise.update(id, publishingHouse);
     }
 
     @DeleteMapping("/{id}")

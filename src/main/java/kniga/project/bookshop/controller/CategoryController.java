@@ -1,9 +1,10 @@
 package kniga.project.bookshop.controller;
 
+import kniga.project.bookshop.dto.CategoryRequest;
 import kniga.project.bookshop.entity.Book;
 import kniga.project.bookshop.entity.Category;
 import kniga.project.bookshop.entity.Genre;
-import kniga.project.bookshop.services.impls.CategoryService;
+import kniga.project.bookshop.services.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,15 +31,15 @@ public class CategoryController {
     }
 
     @PostMapping("/")
-    public Category createCategory(@RequestBody Category category) {
-
-        return servise.save(category);
+    public Category createCategory(@RequestBody CategoryRequest request) {
+        return servise.create(request);
+        //return servise.save(category);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/edit/{id}")
     public Category updateCategory(@PathVariable long id, @RequestBody Category category) {
 
-        return servise.edit(category);
+        return servise.update(id, category);
     }
 
     @DeleteMapping("/{id}")

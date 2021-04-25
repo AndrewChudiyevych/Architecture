@@ -9,5 +9,3 @@ create table if not exists category
 
 alter table category owner to postgres;
 
-
-

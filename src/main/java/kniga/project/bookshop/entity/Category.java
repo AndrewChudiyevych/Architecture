@@ -1,6 +1,9 @@
 package kniga.project.bookshop.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +13,9 @@ import java.util.Set;
 
 @Data
 @Entity(name = "category")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Category {
     @Id
     private Long id;

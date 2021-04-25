@@ -3,11 +3,11 @@ package kniga.project.bookshop.dto;
 import lombok.Data;
 
 @Data
-public class AuthorRequest {
-
+public class PublishingHouseRequest {
     private String name;
 
-    private String surname;
+    private String language;
 
     private String description;
+
 }

@@ -1,7 +1,9 @@
 package kniga.project.bookshop.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -10,6 +12,9 @@ import java.util.Set;
 
 @Data
 @Entity(name = "book")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Book {
     @Id
     private Long id;
@@ -34,7 +39,7 @@ public class Book {
     //@JoinColumn(name = "publishHouse_id")
     private PublishingHouse publishingHouse;
 
-    private BigDecimal price;
+    private double price;
 
     private String dateOfAiring;
 
